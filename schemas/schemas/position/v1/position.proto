@@ -1,0 +1,44 @@
+syntax = "proto3";
+package position.v1;
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/kinexon/fe-challenge/schemas/gen/go/position/v1";
+
+message Position {
+    message OriginalPosition {
+        double x = 1;
+        double y = 2;
+        double z = 3;
+        double a = 4;
+        double b = 5;
+        double c = 6;
+    }
+    // Battery information is now modeled as a first-class message.
+    // This moves it out of the generic `extensions` map for clearer contracts and typing.
+    message Battery {
+        optional int32 percentage = 1;
+        google.protobuf.Timestamp percentage_last_update = 2;
+        optional double voltage = 3;
+        google.protobuf.Timestamp voltage_last_update = 4;
+        optional int32 state = 5; // Battery state: 0=Empty, 1=Low, 2=LowMedium, 3=Medium, 4=High, 5=Full
+        google.protobuf.Timestamp state_last_update = 6;
+    }
+    int64 object_id = 1;
+    string tag_id = 2;
+    google.protobuf.Timestamp timestamp = 3;
+    bool is_valid = 5;
+    int64 source_id = 6;
+    double x = 7;
+    double y = 8;
+    double z = 9;
+    double a = 10;
+    double b = 11;
+    double c = 12;
+    double latitude = 13;
+    double longitude = 14;
+    double altitude = 15;
+    repeated int32 flags = 16;
+    OriginalPosition original = 17;
+    int64 tenant_id = 19;
+    Battery battery = 20;
+}
