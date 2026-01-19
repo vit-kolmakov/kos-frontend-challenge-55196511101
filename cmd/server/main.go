@@ -447,7 +447,7 @@ func (pm *PositionManager) handleSSE(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Connection", "keep-alive")
 
 	// Create client channel
-	client := make(chan *positionv1.Position, 100)
+	client := make(chan *positionv1.Position, numObjects*2)
 	pm.AddClient(client)
 	defer pm.RemoveClient(client)
 
