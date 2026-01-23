@@ -16,6 +16,7 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
+// INFO: You can modify simulation parameters in `cmd/server/main.go`:
 const (
 	// Map boundaries (in meters)
 	mapWidth  = 100.0

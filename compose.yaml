@@ -1,0 +1,16 @@
+services:
+    backend:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "8080:8080"
+
+    frontend:
+        build:
+            context: ./kinexon-frontend
+            dockerfile: frontend.Dockerfile
+        ports:
+            - "5173:80" # Map host 5173 to Nginx 80
+        depends_on:
+            - backend

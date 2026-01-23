@@ -176,7 +176,7 @@ You must use a modern frontend framework for this challenge. We want to see how 
 ### 1. Real-Time Visualization & performance
 
 - [ ] Connect to the SSE stream (`/api/positions/stream`)
-- [ ] Fetch object metadata from `/api/objects`
+- [ ] Fetch object metadata from (`/api/objects`)
 - [ ] Render all 250 objects on a 2D map
 - [ ] Update object positions smoothly as new data arrives (250 position updates per cycle). Note: This is not a final load requirement—you should have an idea of how to scale up in the future (e.g., to handle thousands of objects), though full implementation isn't needed now.
 

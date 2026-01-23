@@ -63,12 +63,14 @@ eventSource.onmessage = (event) => {
 # Get all positions
 curl http://localhost:8080/api/positions
 
+# INFO: works in browser but got `zsh: no matches found: http://localhost:8080/api/position?id=1`
 # Get single position
 curl http://localhost:8080/api/position?id=1
 
 # Get all objects with metadata
 curl http://localhost:8080/api/objects
 
+# INFO: works in browser but got `zsh: no matches found: http://localhost:8080/api/object?id=5`
 # Get single object with metadata
 curl http://localhost:8080/api/object?id=5
 
