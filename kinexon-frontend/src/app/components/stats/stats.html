@@ -1,0 +1,42 @@
+<section class="logo-group">
+  <h1>KINEXON</h1>
+  <span class="accent">ASSET TRACKING</span>
+</section>
+
+@if (stats.value(); as systemData) {
+<section class="connection-group">
+  <div class="stats-group">
+    <label>Total Objects</label>
+    <p class="stats-value">{{ systemData.total_objects }}</p>
+  </div>
+
+  <div class="stats-group">
+    <label>Update Rate</label>
+    <p class="stats-value">{{ systemData.update_interval_ms }}ms</p>
+  </div>
+
+  <div class="stats-group">
+    <label>Clients</label>
+    <span class="stats-value">{{ systemData.connected_clients }}</span>
+  </div>
+
+  <div class="stats-group">
+    <label>Dimensions</label>
+    <span class="stats-value"
+      >{{ systemData.map_dimensions.width }}m × {{
+      systemData.map_dimensions.height }}m</span
+    >
+  </div>
+
+  <div class="connection-status">
+    <span class="dot pulse"></span>
+    Live Stream Active
+  </div>
+</section>
+} @else if (stats.error()) {
+<section class="stats-error">System Telemetry Unavailable</section>
+} @else {
+<section>
+  <p class="stats-loading">Connecting to System API...</p>
+</section>
+}

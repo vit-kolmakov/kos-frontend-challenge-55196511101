@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: var(--off-white);
+  overflow: hidden;
+}
+
+.map-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,148 @@
+@if (selectedAssetMetadata(); as metadata) {
+<section class="control-panel-header">
+  <h2>Asset Details</h2>
+  <button (click)="deselect()" class="close-button">&times;</button>
+</section>
+
+<section class="title-group">
+  <div class="asset-detail">
+    <label>Name: </label>
+    <p class="asset-name">{{ metadata.name }}</p>
+  </div>
+
+  <div class="asset-detail">
+    <label>Label: </label>
+    <p class="tag">{{ metadata.labels[0] }}</p>
+  </div>
+</section>
+
+<hr />
+
+@switch (getAssetType(metadata)) { @case ('container') {
+<ng-container
+  *ngTemplateOutlet="containerTemplate; context: { $implicit: asContainer(metadata.properties) }"
+>
+</ng-container>
+} @case ('order') {
+<ng-container
+  *ngTemplateOutlet="orderTemplate; context: { $implicit: asOrder(metadata.properties) }"
+>
+</ng-container>
+} @case ('tool') {
+<ng-container
+  *ngTemplateOutlet="toolTemplate; context: { $implicit: asTool(metadata.properties) }"
+>
+</ng-container>
+} }
+
+<hr />
+
+@if (selectedLiveTelemetry(); as telemetry) {
+<section class="telemetry-group">
+  <label class="telemetry-title">Live Telemetry</label>
+
+  <div class="asset-detail">
+    <label>Battery: </label>
+    <p class="battery-charge" [class.low]="telemetry.battery < 20">
+      {{ telemetry.battery }}%
+    </p>
+  </div>
+
+  <div class="asset-detail">
+    <label>X:</label>
+    <p>{{ telemetry.x }}</p>
+  </div>
+
+  <div class="asset-detail">
+    <label>Y:</label>
+    <p>{{ telemetry.y }}</p>
+  </div>
+
+  <div class="asset-detail">
+    <label>Heading:</label>
+    <p>{{ telemetry.angle }}&deg;</p>
+  </div>
+
+  <div class="asset-detail">
+    <label>Heading:</label>
+    <p>{{ telemetry.angle }}&deg;</p>
+  </div>
+
+  <div class="asset-detail">
+    <label>Last Update: </label>
+    <p class="timestamp">{{ telemetry.lastSeen | date:'HH:mm:ss.SSS' }}</p>
+  </div>
+
+  <p class="status" [class.invalid]="!telemetry.isValid">
+    Status: {{ telemetry.isValid ? 'Active' : 'Inactive' }}
+  </p>
+</section>
+} @else {
+<section class="empty-state">
+  <p>Telemetry data is currently unavailable.</p>
+</section>
+} } @else {
+<section class="empty-state">
+  <p>Select an asset on the map to view details.</p>
+</section>
+}
+
+<!-- INFO: Asset Properties Templates -->
+<ng-template #containerTemplate let-props>
+  <section class="properties-group">
+    <div class="asset-detail">
+      <label>Capacity: </label>
+      <p>{{ props.capacity }}</p>
+    </div>
+
+    <div class="asset-detail">
+      <label>Fill Level: </label>
+      <p>{{ props.fill_level }}%</p>
+    </div>
+
+    <div class="asset-detail">
+      <label>Temperature: </label>
+      <p>{{ props.temperature }}°C</p>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #orderTemplate let-props>
+  <section class="properties-group">
+    <div class="asset-detail">
+      <label>Customer: </label>
+      <p>{{ props.customer }}</p>
+    </div>
+
+    <div class="asset-detail">
+      <label>Priority: </label>
+      <p class="priority" [attr.data-prio]="props.priority">
+        {{ props.priority }}
+      </p>
+    </div>
+
+    <div class="asset-detail">
+      <label>Due Date: </label>
+      <p>{{ props.due_date }}</p>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #toolTemplate let-props>
+  <section class="properties-group">
+    <div class="asset-detail">
+      <label>Type: </label>
+      <p>{{ props.tool_type }}</p>
+    </div>
+
+    <div class="asset-detail">
+      <label>Operator: </label>
+      <p>{{ props.operator }}</p>
+    </div>
+
+    <div class="asset-detail">
+      <label>Maintenance: </label>
+      <p>In {{ props.maintenance_due }}h</p>
+    </div>
+  </section>
+</ng-template>

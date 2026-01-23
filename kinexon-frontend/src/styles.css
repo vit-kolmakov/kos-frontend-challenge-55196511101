@@ -1,0 +1,220 @@
+/**
+ * INFO: GLOBAL STYLES & CSS RESET
+ */
+:root {
+  /* INFO: Palette Tokens - Reference Color Ways Converted to OKLCH */
+  /* Sky Blue - #00a7e3 */
+  --sky-blue: oklch(0.6855 0.142 233.24);
+  /* Star Command - #0066a7 */
+  --star-command: oklch(0.4961 0.1299 246.82);
+  /* Powder Blue - #85cfeb */
+  --powder-blue: oklch(0.816 0.0834 224.02);
+  /* White - #ffffff */
+  --white: oklch(1 0 0);
+  /* Light Grey - #9c9e9f */
+  --light-grey: oklch(0.6979 0.0027 228.8);
+  /* Baby Blue - #008acf */
+  --baby-blue: oklch(0.6063 0.1428 241.59);
+  /* Dark Seafoam - #10b981 */
+  --dark-seafoam: oklch(0.6959 0.1491 162.48);
+  /* Black Olive - #272f2f */
+  --black-olive: oklch(0.2976 0.0111 196.57);
+  /* Umber Brown - #2F2727 */
+  --umber-brown: oklch(0.2817 0.012 17.89);
+  /* Orange - #e33c00 */
+  --orange: oklch(0.6043 0.2103 35.33);
+  /* Off White - #f3f4f6 */
+  --off-white: oklch(0.967 0.0029 264.54);
+  /* Grey - #374151 */
+  --grey: oklch(0.3729 0.0306 259.73);
+  /* Dark Navy - #111827 */
+  --dark-navy: oklch(0.2101 0.0318 264.66);
+  /* Cinober - #ef4444 */
+  --cinober: oklch(0.6368 0.2078 25.33);
+  /* Red Sand - #776363 */
+  --red-sand: oklch(0.5186 0.0263 17.89);
+  /* Grey Sand - #9b9fa2 */
+  --grey-sand: oklch(0.7 0.006 237.3);
+  /* Light Blue - #ebf8fd */
+  --light-blue: oklch(0.9709 0.0153 222.68);
+  /* Goldenrod - #d3a813 */
+  --goldenrod: oklch(0.75 0.15 90);
+  /* Black */
+  --black: oklch(0 0 0);
+  /* White */
+  --white: oklch(1 0 0);
+
+  /* INFO: Semantic Tokens - Afford better long-term maintenance */
+  --color-primary: var(--sky-blue);
+  --color-on-primary: var(--white);
+  --color-secondary: var(--light-grey);
+  --color-on-secondary: var(--white);
+  --color-accent: var(--baby-blue);
+  --color-accent-light: var(--powder-blue);
+  --color-accent-dark: var(--star-command);
+  --color-focus: var(--powder-blue);
+  --color-alert: var(--cinober);
+  --color-background: var(--baby-blue);
+  --color-header-background: var(--grey-sand);
+  --color-foreground: var(--light-blue);
+  --color-field-background: var(--dark-navy);
+  --color-map-gridline: var(--black);
+
+  /*  INFO: Typography Tokens - To ensure component uniformity */
+  --font-base: "Titillium Web", system-ui, sans-serif;
+  --radius-md: 6px;
+  --h1-font-size: 1.5rem;
+  --h1-font-weight: bold;
+
+  /* INFO:  Semantic Tokens */
+  --size-xs: 0.25rem;
+  --size-s: 0.5rem;
+  --size-m: 1rem;
+  --size-l: 1.5rem;
+  --size-xl: 2rem;
+  --size-xxl: 2.5rem;
+  --spacing-xs: var(--size-xs);
+  --spacing-s: var(--size-s);
+  --spacing-m: var(--size-m);
+  --spacing-l: var(--size-l);
+  --spacing-xl: var(--size-xl);
+  --spacing-xxl: var(--size-xxl);
+
+  font-family: var(--font-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  background: var(--color-background);
+
+  /* Fallback for browsers that don't support stretch yet */
+  --stretch: 100%;
+
+  /* Firefox */
+  @supports (width: -moz-available) {
+    --stretch: -moz-available;
+  }
+
+  /* Safari */
+  @supports (width: -webkit-fill-available) {
+    --stretch: -webkit-fill-available;
+  }
+
+  /* Chromium */
+  @supports (width: stretch) {
+    --stretch: stretch;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  /* INFO: Strip extra spacing */
+  margin: 0;
+  padding: 0;
+  /* INFO: Ensure font uniformity */
+  font: inherit;
+}
+
+html,
+body,
+main,
+aside,
+section,
+article {
+  width: var(--stretch);
+  max-width: 100%;
+}
+
+html {
+  /* INFO: Default to dark mode */
+  color-scheme: dark light;
+  /* INFO: Allows the browser to better account for scrollbar dimensions for `vw` (Viewport Units)  */
+  scrollbar-gutter: stable;
+
+  /* INFO: Prevent font size inflation */
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* INFO: Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* INFO: Ensure media responsiveness and makes images easier to work with */
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* INFO: Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* INFO: Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p {
+  max-width: 75ch;
+  text-wrap: pretty;
+}
+
+/* INFO: A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* INFO: Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* INFO: Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* INFO: Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* INFO: Respect accessiblity defaults */
+@media (prefers-reduced-motion: no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+  }
+}

@@ -1,0 +1,27 @@
+:host {
+  display: grid;
+  gap: var(--size-m);
+  padding: var(--size-s);
+  height: 100vh;
+  max-height: 100vh;
+}
+
+header {
+  background: var(--color-foreground);
+  padding: var(--size-m);
+  height: 6rem;
+}
+
+.main-content {
+  grid-template-columns: 1fr 30%;
+  display: grid;
+  gap: var(--size-m);
+  height: 45rem;
+}
+
+footer {
+  align-self: start;
+  text-align: center;
+  color: var(--color-accent-light);
+  height: 2rem;
+}

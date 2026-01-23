@@ -1,0 +1,97 @@
+:host {
+  display: grid;
+  height: 100%;
+  gap: var(--size-m);
+  padding: var(--size-m);
+  color: var(--color-accent);
+  background: var(--color-foreground);
+}
+
+h2 {
+  font-weight: bold;
+  font-size: var(--size-xl);
+  color: var(--color-primary);
+}
+
+.control-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--light-grey);
+  font-size: var(--size-l);
+}
+
+.title-group,
+.properties-group,
+.telemetry-group {
+  display: grid;
+}
+
+.asset-name {
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.tag {
+  background: var(--grey);
+  padding: var(--spacing-xs) var(--spacing-s);
+  border-radius: var(--size-m);
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--color-accent-light);
+}
+
+.asset-detail {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-s);
+}
+
+label {
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+}
+
+.title-group,
+.properties-group,
+.telemetry-group {
+  background: var(--color-field-background);
+  gap: var(--spacing-s);
+  padding: var(--spacing-s);
+  border-radius: var(--size-s);
+}
+
+.telemetry-title {
+  text-decoration: underline;
+}
+
+.battery-charge {
+  font-weight: bold;
+}
+
+.battery-charge.low,
+.status.invalid,
+.priority[data-prio="urgent"] {
+  color: var(--color-alert);
+  font-weight: bold;
+}
+
+.status {
+  color: var(--dark-seafoam);
+}
+
+.empty-state {
+  align-self: center;
+  text-align: center;
+  color: var(--dark-seafoam);
+  font-weight: bold;
+}
